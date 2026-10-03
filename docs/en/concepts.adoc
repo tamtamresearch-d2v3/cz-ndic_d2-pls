@@ -39,24 +39,63 @@ include::{samplesdir}/predefined_location_set-fcd.xml[tag=header,indent=2]
 [[predef]]
 === Predefined locations
 
-Each location is a `predefinedLocationReference` element of type `loc:PredefinedLocation` with a location
-description (`location`, always linear – see <<polohy>>).
+Each location of a set is a `predefinedLocationReference` element. Its type determines how the location
+runs:
+
+[cols="2,3",options="header"]
+|===
+|Type |Location
+|`loc:PredefinedLocation` |contiguous section of one road (<<jedna-komunikace>>)
+|`loc:PredefinedItinerary` |itinerary – contiguous location over several roads (<<trasy>>)
+|`loc:PredefinedLocationGroup` |non-contiguous location group, e.g. an area (<<skupiny>>)
+|===
+
+*Single road rule.* The location description (`location`) is always the linear location
+`loc:SingleRoadLinearLocation` – a contiguous section of one road or street whose location referencing
+methods (<<polohy>>) all have the same extent. This applies to a stand-alone location and to each part of an
+itinerary or group:
+
+* A section of another road inside a junction, a short connecting link or two concurrent roads do not start
+  a new part.
+* If the location has an ALERT-C description, it corresponds to one path of the ALERT-C location table.
+
+*Common properties.*
 
 * The *identifier* (`@id`) is stable. FCD sections have it composed of ALERT-C locations:
-  `TS02125T15781` is the section from location 2125 to location 15781 (location codes padded with zeros to five digits), the opposite direction is
-  `TS15781T02125`.
+  `TS02125T15781` is the section from location 2125 to location 15781 (location codes padded with zeros to
+  five digits), the opposite direction is `TS15781T02125`.
 * The *name* (`predefinedLocationName`) is given only if the location has one in the source: road weather
-  station sections carry the station name (`I/43 Černá Hora`, `D0 15.742`); FCD sections, groups and
-  itineraries have no name.
+  station sections carry the station name (`I/43 Černá Hora`, `D0 15.742`); FCD sections, itineraries and
+  groups have no name.
 * The *version* (`@version`) corresponds to the Global Network release the set is derived from, in the form
   `YYMM01` (network 25.06 → `250601`):
 ** with each network release *all* locations of the set get a new version, including those where only the
    network version label (`linearElementReferenceModelVersion`) changed; the identifier stays,
 ** a new location gets a new identifier,
 ** messages always reference the version of the current set.
+* The publication always contains all valid locations, including those published earlier. No time is given
+  inside the locations.
 
-The publication always contains all valid locations, including those published earlier. No time is given
-inside the locations.
+*Parts of itineraries and groups.*
+
+. Itineraries and groups have their own identifier and version; no name is given.
+. Each part is a nested `predefinedLocation` element – a complete predefined location with its own
+  identifier, version, location description and, where available, a name (the same as a stand-alone
+  location).
+. An itinerary or a group has at least two parts.
+. Part identifiers are unique in the whole publication; the same part does not repeat within an itinerary,
+  a group or the publication.
+. If a part changes, both the part and the whole itinerary or group get a new version; adding or removing a
+  part changes the version of the itinerary or group.
+
+[[jedna-komunikace]]
+==== Location on a single road
+
+A location on a single road is a `predefinedLocationReference` element of type `loc:PredefinedLocation`; its
+`location` is a `loc:SingleRoadLinearLocation`.
+
+.Location on a single road
+image::jedna-komunikace-en.svg[Location on a single road,width=640,align="center"]
 
 .Predefined location – road weather station section described by OpenLR, ALERT-C and GN sections (sample `predefined_location_set-weather.xml`)
 [source,xml]
@@ -64,70 +103,19 @@ inside the locations.
 include::{samplesdir}/predefined_location_set-weather.xml[tag=weather-1,indent=0]
 ----
 
-[[skupiny]]
-==== Location groups
-
-A group combines sections that are repeatedly referenced as a whole – also on different roads and
-non-contiguous: an area of regular winter closures, a permanent diversion route, sections around a road
-weather station.
-
-.Group of three non-contiguous sections on two roads
-image::skupina-poloh-en.svg[Location group – non-contiguous sections,width=640,align="center"]
-
-A group is a `predefinedLocationReference` element of type `loc:PredefinedLocationGroup`. It is filled as
-follows:
-
-. The group gets its own identifier and version; no name is given.
-. Each section of the group is a nested `predefinedLocation` element – a complete predefined location with
-  its own identifier, version, location description and, where available, a name (the same as a
-  stand-alone location).
-. A group has at least two sections; their order has no meaning.
-. Section identifiers are unique in the whole publication; the same section does not repeat within a
-  group or the publication.
-. If a section changes, both the section and the group get a new version; adding or removing a section
-  changes the group version.
-
-A message references the whole group with the type `loc:LocationGroupByReference` (`@targetClass` =
-`loc:PredefinedLocationGroup`). Predefined groups are created only for areas that recur; one-off area
-events are described by the event formats with a group of sections directly in the message.
-
-.Location group (sample `predefined_location_loc_group.xml`, shortened)
-[source,xml]
-----
-include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
-    ...
-  </loc:predefinedLocation>
-  <loc:predefinedLocation id="…" version="…">
-    ...
-  </loc:predefinedLocation>
-</loc:predefinedLocationReference>
-----
-
 [[trasy]]
-==== Location over several roads
+==== Itinerary over several roads
 
-A predefined location (`loc:PredefinedLocation`) always lies on a single road: its `location` is the linear
-location `loc:SingleRoadLinearLocation`, i.e. a contiguous section of one road or street, and all location
-referencing methods have the same extent. If a permanent contiguous location runs over several roads, it is
-described as a predefined itinerary; a non-contiguous location is described by a group (<<skupiny>>).
+A contiguous location that runs from one road onto another (e.g. a permanent diversion route on a class II
+road and a connecting class III road) is an itinerary – a `predefinedLocationReference` element of type
+`loc:PredefinedItinerary`. It is a contiguous location group: each of its parts lies on one road.
 
-.Location on a single road, itinerary over several roads and a non-contiguous location
-image::poloha-vice-komunikaci-en.svg[Location on a single road, itinerary over several roads and a non-contiguous location,width=680,align="center"]
+.Itinerary over two roads
+image::trasa-en.svg[Itinerary over several roads,width=640,align="center"]
 
-An itinerary is a `predefinedLocationReference` element of type `loc:PredefinedItinerary`. It is filled as
-follows:
-
-. The itinerary gets its own identifier and version; no name is given.
-. Each part of the itinerary on one road is a nested `predefinedLocation` element – a complete predefined
-  location with its own identifier, version, location description and its own location path `gmlLineString`.
-. The parts are in the order of travel (for a bidirectional location in the order of the first direction),
-  the end of a part is the start of the next one and the parts do not overlap. The directionality is the same
-  in all parts.
-. A section of another road inside a junction, a short connecting link or two concurrent roads do not start
-  a new part. If the location has an ALERT-C description, each part corresponds to one path of the ALERT-C
-  location table.
-. An itinerary has at least two parts; identifiers and versions of the parts follow the same rules as the
-  sections of a group.
+* The parts are in the order of travel (for a bidirectional location in the order of the first direction);
+  the end of a part is the start of the next one and the parts do not overlap.
+* The directionality is the same in all parts; each part has its own location path `gmlLineString`.
 
 The structure corresponds to an itinerary over several roads in the event formats, where the parts are
 numbered by the `@index` attribute; in a location set the order of the parts is their order in the itinerary.
@@ -142,6 +130,34 @@ include::{samplesdir}/predefined_location_itinerary.xml[tag=itinerary-part-2,ind
       ...
     </loc:predefinedLocation>
   </loc:predefinedLocationReference>
+----
+
+[[skupiny]]
+==== Non-contiguous location group
+
+A non-contiguous group combines sections that are repeatedly referenced as a whole and do not connect – also
+on different roads: an area of regular winter closures, sections around a road weather station. It is a
+`predefinedLocationReference` element of type `loc:PredefinedLocationGroup`.
+
+.Group of three non-contiguous sections on two roads
+image::skupina-poloh-en.svg[Location group – non-contiguous sections,width=640,align="center"]
+
+* The order of the parts in a group has no meaning.
+* A message references the whole group with the type `loc:LocationGroupByReference` (`@targetClass` =
+  `loc:PredefinedLocationGroup`).
+* Predefined groups are created only for areas that recur; one-off area events are described by the event
+  formats with a group of sections directly in the message.
+
+.Location group (sample `predefined_location_loc_group.xml`, shortened)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
+    ...
+  </loc:predefinedLocation>
+  <loc:predefinedLocation id="…" version="…">
+    ...
+  </loc:predefinedLocation>
+</loc:predefinedLocationReference>
 ----
 
 [[smer]]

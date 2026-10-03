@@ -26,7 +26,7 @@ PredefinedLocation:
     ndic: "Only where the source provides a name: road weather station sections (station name); FCD sections have no name."
 
 PredefinedItinerary:
-  _: Predefined itinerary – a contiguous location over several roads (see Location over several roads).
+  _: Predefined itinerary – a contiguous location over several roads (see Itinerary over several roads).
   predefinedLocation:
     card: 2..*
     ndic: "Parts of the itinerary, each on one road, in the order of travel (for a bidirectional location in the order of the first direction); the parts connect."

@@ -26,7 +26,7 @@ PredefinedLocation:
     ndic: "Jen je-li název ve zdroji: úseky meteohlásek (název meteohlásky); úseky FCD název nemají."
 
 PredefinedItinerary:
-  _: Předdefinovaná trasa – souvislá poloha přes více komunikací (viz Poloha na více komunikacích).
+  _: Předdefinovaná trasa – souvislá poloha přes více komunikací (viz Trasa přes více komunikací).
   predefinedLocation:
     card: 2..*
     ndic: "Části trasy, každá na jedné komunikaci, v pořadí jízdy (u obousměrné polohy v pořadí prvního směru); části na sebe navazují."
