@@ -26,3 +26,5 @@
 ** OpenLR classes have different element names in the 3.7 model (`openlrCoordinates`,
    `openlrLowestFrcToNextLRPoint`) and road class values in lower case (`frc0`–`frc7`).
 ** Point locations are not used.
+** A permanent location over several roads is described by a predefined itinerary `loc:PredefinedItinerary`
+   whose parts (`predefinedLocation`) each lie on one road and are in the order of travel.

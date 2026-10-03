@@ -23,3 +23,5 @@
 ** Třídy OpenLR mají v modelu 3.7 jiné názvy prvků (`openlrCoordinates`, `openlrLowestFrcToNextLRPoint`)
    a hodnoty třídy komunikace malými písmeny (`frc0`–`frc7`).
 ** Bodové polohy se nepoužívají.
+** Stálou polohu přes více komunikací popisuje předdefinovaná trasa `loc:PredefinedItinerary`, jejíž části
+   (`predefinedLocation`) leží každá na jedné komunikaci a jsou v pořadí jízdy.

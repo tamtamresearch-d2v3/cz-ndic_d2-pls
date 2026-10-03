@@ -607,6 +607,21 @@
       <xs:element name="_pointCoordinatesExtension" type="com:_ExtensionType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="PredefinedItinerary">
+    <xs:annotation>
+      <xs:documentation>An identifiable versioned instance of a predefined itinerary.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="loc:PredefinedLocationReference">
+        <xs:sequence>
+          <xs:element name="predefinedLocation" type="loc:PredefinedLocation" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="_predefinedItineraryExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required" />
+        <xs:attribute name="version" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="PredefinedLocation">
     <xs:annotation>
       <xs:documentation>An identifiable versioned instance of a single predefined location.</xs:documentation>

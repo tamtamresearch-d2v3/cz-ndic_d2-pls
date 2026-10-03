@@ -44,7 +44,7 @@ Každá poloha je element `predefinedLocationReference` typu `loc:PredefinedLoca
 * *Identifikátor* (`@id`) je stálý. Úseky FCD ho mají složený z lokací ALERT-C: `TS02125T15781` je úsek
   z lokace 2125 do lokace 15781 (čísla lokací doplněná nulami na pět číslic), opačný směr je `TS15781T02125`.
 * *Název* (`predefinedLocationName`) se uvádí, jen má-li ho poloha ve zdroji: úseky meteohlásek mají název
-  meteohlásky (`I/43 Černá Hora`, `D0 15.742`), úseky FCD a skupiny název nemají.
+  meteohlásky (`I/43 Černá Hora`, `D0 15.742`), úseky FCD, skupiny a trasy název nemají.
 * *Verze* (`@version`) odpovídá vydání sítě Global Network, ze kterého je sada odvozena, ve tvaru
   `RRMM01` (síť 25.06 → `250601`):
 ** s každým vydáním sítě dostanou novou verzi *všechny* polohy sady, i ty, u nichž se změnilo jen označení
@@ -80,9 +80,8 @@ Skupina je element `predefinedLocationReference` typu `loc:PredefinedLocationGro
 . Změní-li se úsek, dostane novou verzi on i skupina; přidání nebo odebrání úseku mění verzi skupiny.
 
 Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`@targetClass` =
-`loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro opakující se oblasti
-a polohy přes více komunikací; jednorázové oblastní jevy popisují formáty událostí skupinou úseků
-přímo ve zprávě.
+`loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro oblasti, které se opakují;
+jednorázové oblastní jevy popisují formáty událostí skupinou úseků přímo ve zprávě.
 
 .Skupina poloh (vzorek `predefined_location_loc_group.xml`, zkráceno)
 [source,xml]
@@ -96,22 +95,42 @@ include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
 </loc:predefinedLocationReference>
 ----
 
+[[trasy]]
 ==== Poloha na více komunikacích
 
 Předdefinovaná poloha (`loc:PredefinedLocation`) leží vždy na jedné komunikaci: její `location` je liniová
 poloha `loc:SingleRoadLinearLocation`, tedy souvislý úsek jedné silnice nebo ulice, a všechny metody popisu
-mají stejný rozsah. Vede-li stálá poloha přes více komunikací, popisuje se jako skupina poloh.
+mají stejný rozsah. Vede-li stálá souvislá poloha přes více komunikací, popisuje se jako předdefinovaná trasa;
+nesouvislou polohu popisuje skupina (<<skupiny>>).
 
-.Poloha na jedné komunikaci, přes více komunikací a nesouvislá poloha
-image::poloha-vice-komunikaci.svg[Poloha na jedné komunikaci, přes více komunikací a nesouvislá poloha,width=680,align="center"]
+.Poloha na jedné komunikaci, trasa přes více komunikací a nesouvislá poloha
+image::poloha-vice-komunikaci.svg[Poloha na jedné komunikaci, trasa přes více komunikací a nesouvislá poloha,width=680,align="center"]
 
-* Každá část polohy na jedné komunikaci je samostatný úsek skupiny (`predefinedLocation`) s vlastními
-  metodami popisu a vlastním průběhem `gmlLineString`.
-* U souvislé polohy na sebe části navazují: konec jedné části je počátkem následující a části se
-  nepřekrývají. Pořadí úseků ve skupině ani u souvislé polohy nemá význam; návaznost plyne z jejich průběhu.
-* Novou část nezakládá úsek jiné komunikace uvnitř křižovatky, krátká spojka ani souběh dvou silnic. Má-li
+Trasa je element `predefinedLocationReference` typu `loc:PredefinedItinerary`. Naplňuje se takto:
+
+. Trasa dostane vlastní identifikátor a verzi; název se neuvádí.
+. Každá část trasy na jedné komunikaci je vnořený element `predefinedLocation` – úplná předdefinovaná poloha
+  s vlastním identifikátorem, verzí, popisem polohy a vlastním průběhem `gmlLineString`.
+. Části jsou v pořadí jízdy (u obousměrné polohy v pořadí prvního směru), konec části je počátkem následující
+  a části se nepřekrývají. Směrovost je ve všech částech shodná.
+. Novou část nezakládá úsek jiné komunikace uvnitř křižovatky, krátká spojka ani souběh dvou silnic. Má-li
   poloha popis ALERT-C, odpovídá každá část jedné cestě lokační tabulky ALERT-C.
-* Stejně se popisuje nesouvislá poloha, jejíž úseky nenavazují (např. ramena křižovatky).
+. Trasa má nejméně dvě části; identifikátory a verze částí se řídí stejnými pravidly jako úseky skupiny.
+
+Zápis odpovídá trase přes více komunikací ve formátech událostí, kde jsou části očíslované atributem
+`@index`; v sadě poloh určuje pořadí částí jejich pořadí v trase.
+
+.Trasa po dvou silnicích (vzorek `predefined_location_itinerary.xml`, zkráceno)
+[source,xml]
+----
+include::{samplesdir}/predefined_location_itinerary.xml[tag=itinerary-head,indent=0]
+      ...
+    </loc:predefinedLocation>
+include::{samplesdir}/predefined_location_itinerary.xml[tag=itinerary-part-2,indent=2]
+      ...
+    </loc:predefinedLocation>
+  </loc:predefinedLocationReference>
+----
 
 [[smer]]
 === Směr a obousměrné polohy
@@ -135,7 +154,7 @@ protisměru (<<gn>>)
 
 Skupina poloh se pro obousměrnost nepoužívá. Dvojice jednosměrných poloh sdružená do skupiny by
 vyžadovala odkaz jiného typu (`loc:LocationGroupByReference`), ztratila by vazbu mezi směry a metody
-OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pro oblasti a polohy přes více komunikací.
+OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pro oblasti.
 
 [[polohy]]
 == Popisování poloh

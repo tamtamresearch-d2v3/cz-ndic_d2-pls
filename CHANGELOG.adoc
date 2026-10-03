@@ -7,5 +7,6 @@ Formát převeden na model DATEX II 3.7 (dříve cz-ndic_d2-predefined-location-
 * Zpráva: kořenový element `d2:payload` s typem publikace v atributu `@xsi:type`; obálky `d2LogicalModel` a `exchange` se nepoužívají.
 * Formát identifikují atributy `@profileName` a `@profileVersion`; `feedType` identifikuje distribuci (`x-source:…`), `feedDescription` se nepoužívá.
 * Síť Global Network označena `CZ-RSD-GlobalNetwork`.
+* Profil doplněn o předdefinovanou trasu `loc:PredefinedItinerary` (poloha přes více komunikací).
 
 Podrobný popis viz dokumentace formátu (příloha Historie změn dokumentace).
