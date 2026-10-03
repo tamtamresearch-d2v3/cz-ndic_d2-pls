@@ -843,6 +843,60 @@
       <definition>OpenLR line location reference</definition>
     </D2Component>
     <D2VersionedIdentifiable>
+      <name>PredefinedItinerary</name>
+      <ID>EAID_DFD38182_C859_4ce6_B90B_473AB423A21E</ID>
+      <package>
+        <name>PredefinedLocationsPublication</name>
+        <ID>EAPK_49D6C4B0_A023_451a_B770_60957C0A5013</ID>
+        <generate>true</generate>
+        <definition>A collection of data providing a definition of one particular defined group of sections of the network.</definition>
+        <NamespaceName>LocationReferencing</NamespaceName>
+      </package>
+      <generate>true</generate>
+      <isGenerated>true</isGenerated>
+      <SuperD2Component>EAID_AF1897C9_6689_4b8f_A531_A62190B9FFA8</SuperD2Component>
+      <NamespaceName>LocationReferencing</NamespaceName>
+      <isAbstract>false</isAbstract>
+      <isExtension>false</isExtension>
+      <relations>
+        <ID>EAID_7DC18F19_A3A5_4e4a_8D2D_158A51BD05BE</ID>
+        <target>EAID_36407EEB_B4DB_4779_9908_A0DD512EF781</target>
+        <order>1</order>
+        <lowerBound>0</lowerBound>
+        <upperBound>1</upperBound>
+        <upperBoundUnlimited>false</upperBoundUnlimited>
+        <generate>false</generate>
+        <newLowerBound>-1</newLowerBound>
+        <newUpperBound>-1</newUpperBound>
+      </relations>
+      <relations>
+        <ID>EAID_EAD36171_9108_4629_98EE_287C74B7DFB1</ID>
+        <target>EAID_85139981_6F49_47bc_A7C9_A2787ECF5874</target>
+        <order>2</order>
+        <lowerBound>0</lowerBound>
+        <upperBound>-1</upperBound>
+        <upperBoundUnlimited>true</upperBoundUnlimited>
+        <generate>true</generate>
+        <newLowerBound>-1</newLowerBound>
+        <newUpperBound>-1</newUpperBound>
+      </relations>
+      <attributes>
+        <ID>EAID_29E692C6_BE26_4e46_BBCA_DCBCC277B6DA</ID>
+        <name>predefinedItineraryName</name>
+        <type>EAID_E9FD7AF8_362B_4b36_899F_2F827A73E908</type>
+        <order>0</order>
+        <lowerBound>0</lowerBound>
+        <upperBound>1</upperBound>
+        <upperBoundUnlimited>false</upperBoundUnlimited>
+        <definition>A name assigned to the predefined itinerary.</definition>
+        <generate>false</generate>
+        <attribute>false</attribute>
+        <newLowerBound>-1</newLowerBound>
+        <newUpperBound>-1</newUpperBound>
+      </attributes>
+      <definition>An identifiable versioned instance of a predefined itinerary.</definition>
+    </D2VersionedIdentifiable>
+    <D2VersionedIdentifiable>
       <name>PredefinedLocationGroup</name>
       <ID>EAID_79C43ED8_25F1_4c47_BE4F_007423732BF4</ID>
       <package>
