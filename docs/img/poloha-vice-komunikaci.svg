@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330">
+<rect width="760" height="330" fill="#FFFFFF"/>
+<rect x="16" y="16" width="232" height="298" rx="4" fill="none" stroke="#C8CDC6"/>
+<text x="132" y="40" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#09417A" text-anchor="middle" font-weight="bold">Jedna komunikace</text>
+<rect x="264" y="16" width="232" height="298" rx="4" fill="none" stroke="#C8CDC6"/>
+<text x="380" y="40" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#09417A" text-anchor="middle" font-weight="bold">Souvislá poloha</text>
+<text x="380" y="56" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#09417A" text-anchor="middle" font-weight="bold">přes více komunikací</text>
+<rect x="512" y="16" width="232" height="298" rx="4" fill="none" stroke="#C8CDC6"/>
+<text x="628" y="40" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#09417A" text-anchor="middle" font-weight="bold">Nesouvislá poloha</text>
+<path d="M32,170 C90,150 150,190 232,160" fill="none" stroke="#C8CDC6" stroke-width="7" stroke-linecap="round"/>
+<path d="M70,162 C110,155 150,180 196,172" fill="none" stroke="#0096DC" stroke-width="7" stroke-linecap="round"/>
+<text x="36" y="146" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#6B7069" text-anchor="start" font-weight="normal">silnice II. třídy</text>
+<circle cx="132" cy="148" r="11" fill="#09417A"/><text x="132" y="152" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">A</text>
+<path d="M280,190 C330,185 360,178 380,175" fill="none" stroke="#C8CDC6" stroke-width="7" stroke-linecap="round"/>
+<path d="M380,175 C410,150 430,110 470,80" fill="none" stroke="#C8CDC6" stroke-width="5" stroke-linecap="round"/>
+<path d="M380,175 C420,185 450,200 480,215" fill="none" stroke="#C8CDC6" stroke-width="4" stroke-linecap="round"/>
+<path d="M300,188 C330,184 360,179 380,175" fill="none" stroke="#0096DC" stroke-width="7" stroke-linecap="round"/>
+<path d="M380,175 C405,152 425,120 450,96" fill="none" stroke="#0096DC" stroke-width="7" stroke-linecap="round"/>
+<circle cx="380" cy="175" r="4" fill="#09417A"/>
+<text x="282" y="212" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#6B7069" text-anchor="start" font-weight="normal">silnice II. třídy</text>
+<text x="472" y="74" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#6B7069" text-anchor="end" font-weight="normal">silnice III. třídy</text>
+<circle cx="338" cy="162" r="11" fill="#09417A"/><text x="338" y="166" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">A</text>
+<circle cx="428" cy="150" r="11" fill="#09417A"/><text x="428" y="154" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">B</text>
+<path d="M528,170 C580,168 600,166 628,165 S700,160 732,158" fill="none" stroke="#C8CDC6" stroke-width="7" stroke-linecap="round"/>
+<path d="M628,165 C630,195 632,230 634,250" fill="none" stroke="#C8CDC6" stroke-width="5" stroke-linecap="round"/>
+<path d="M558,169 C580,168 596,167 616,166" fill="none" stroke="#0096DC" stroke-width="7" stroke-linecap="round"/>
+<path d="M642,164 C660,163 680,162 700,160" fill="none" stroke="#0096DC" stroke-width="7" stroke-linecap="round"/>
+<path d="M629,178 C630,196 631,214 632,230" fill="none" stroke="#0096DC" stroke-width="7" stroke-linecap="round"/>
+<circle cx="628" cy="165" r="4" fill="#09417A"/>
+<circle cx="586" cy="148" r="11" fill="#09417A"/><text x="586" y="152" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">A</text>
+<circle cx="672" cy="142" r="11" fill="#09417A"/><text x="672" y="146" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">B</text>
+<circle cx="652" cy="206" r="11" fill="#09417A"/><text x="652" y="210" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">C</text>
+<text x="32" y="266" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#09417A" text-anchor="start" font-weight="bold">loc:PredefinedLocation</text>
+<text x="32" y="284" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#333333" text-anchor="start" font-weight="normal">souvislý úsek, všechny metody</text>
+<text x="32" y="300" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#333333" text-anchor="start" font-weight="normal">se stejným rozsahem</text>
+<text x="280" y="266" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#09417A" text-anchor="start" font-weight="bold">loc:PredefinedLocationGroup</text>
+<text x="280" y="284" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#333333" text-anchor="start" font-weight="normal">úsek na každé komunikaci,</text>
+<text x="280" y="300" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#333333" text-anchor="start" font-weight="normal">úseky na sebe navazují</text>
+<text x="528" y="266" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="12" fill="#09417A" text-anchor="start" font-weight="bold">loc:PredefinedLocationGroup</text>
+<text x="528" y="284" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#333333" text-anchor="start" font-weight="normal">úseky bez návaznosti,</text>
+<text x="528" y="300" font-family="SourceSansPro, Source Sans Pro, Noto Serif, Noto Sans, DejaVu Sans, sans-serif" font-size="11" fill="#333333" text-anchor="start" font-weight="normal">např. ramena křižovatky</text>
+</svg>

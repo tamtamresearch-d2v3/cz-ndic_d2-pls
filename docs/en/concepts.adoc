@@ -88,8 +88,9 @@ follows:
   changes the group version.
 
 A message references the whole group with the type `loc:LocationGroupByReference` (`@targetClass` =
-`loc:PredefinedLocationGroup`). Predefined groups are created only for areas that recur; one-off area
-events are described by the event formats with a group of sections directly in the message.
+`loc:PredefinedLocationGroup`). Predefined groups are created only for recurring areas and locations over
+several roads; one-off area events are described by the event formats with a group of sections directly
+in the message.
 
 .Location group (sample `predefined_location_loc_group.xml`, shortened)
 [source,xml]
@@ -102,6 +103,27 @@ include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
   </loc:predefinedLocation>
 </loc:predefinedLocationReference>
 ----
+
+==== Location over several roads
+
+A predefined location (`loc:PredefinedLocation`) always lies on a single road: its `location` is the linear
+location `loc:SingleRoadLinearLocation`, i.e. a contiguous section of one road or street, and all location
+referencing methods have the same extent. If a permanent location runs over several roads, it is described
+as a location group.
+
+.Location on a single road, over several roads and a non-contiguous location
+image::poloha-vice-komunikaci-en.svg[Location on a single road, over several roads and a non-contiguous location,width=680,align="center"]
+
+* Each part of the location on one road is a separate section of the group (`predefinedLocation`) with its
+  own location referencing methods and its own location path `gmlLineString`.
+* In a contiguous location the parts connect: the end of one part is the start of the next one and the parts
+  do not overlap. The order of the sections in the group has no meaning even for a contiguous location; the
+  connection follows from their paths.
+* A section of another road inside a junction, a short connecting link or two concurrent roads do not start
+  a new part. If the location has an ALERT-C description, each part corresponds to one path of
+  the ALERT-C location table.
+* A non-contiguous location whose sections do not connect (e.g. the arms of a junction) is described in the
+  same way.
 
 [[smer]]
 === Direction and bidirectional locations
@@ -126,7 +148,7 @@ opposite direction follows the route of the first direction (<<gn>>)
 
 Location groups are not used for bidirectionality. A pair of one-directional locations combined in a group
 would require a different reference type (`loc:LocationGroupByReference`), would lose the link between the
-directions, and OpenLR and ALERT-C would express bidirectionality twice. Groups are reserved for areas.
+directions, and OpenLR and ALERT-C would express bidirectionality twice. Groups are reserved for areas and locations over several roads.
 
 [[polohy]]
 == Location referencing

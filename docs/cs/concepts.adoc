@@ -80,8 +80,9 @@ Skupina je element `predefinedLocationReference` typu `loc:PredefinedLocationGro
 . Změní-li se úsek, dostane novou verzi on i skupina; přidání nebo odebrání úseku mění verzi skupiny.
 
 Zpráva odkazuje na celou skupinu typem `loc:LocationGroupByReference` (`@targetClass` =
-`loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro oblasti, které se opakují;
-jednorázové oblastní jevy popisují formáty událostí skupinou úseků přímo ve zprávě.
+`loc:PredefinedLocationGroup`). Předdefinované skupiny se zakládají jen pro opakující se oblasti
+a polohy přes více komunikací; jednorázové oblastní jevy popisují formáty událostí skupinou úseků
+přímo ve zprávě.
 
 .Skupina poloh (vzorek `predefined_location_loc_group.xml`, zkráceno)
 [source,xml]
@@ -94,6 +95,23 @@ include::{samplesdir}/predefined_location_loc_group.xml[tag=group-head,indent=0]
   </loc:predefinedLocation>
 </loc:predefinedLocationReference>
 ----
+
+==== Poloha na více komunikacích
+
+Předdefinovaná poloha (`loc:PredefinedLocation`) leží vždy na jedné komunikaci: její `location` je liniová
+poloha `loc:SingleRoadLinearLocation`, tedy souvislý úsek jedné silnice nebo ulice, a všechny metody popisu
+mají stejný rozsah. Vede-li stálá poloha přes více komunikací, popisuje se jako skupina poloh.
+
+.Poloha na jedné komunikaci, přes více komunikací a nesouvislá poloha
+image::poloha-vice-komunikaci.svg[Poloha na jedné komunikaci, přes více komunikací a nesouvislá poloha,width=680,align="center"]
+
+* Každá část polohy na jedné komunikaci je samostatný úsek skupiny (`predefinedLocation`) s vlastními
+  metodami popisu a vlastním průběhem `gmlLineString`.
+* U souvislé polohy na sebe části navazují: konec jedné části je počátkem následující a části se
+  nepřekrývají. Pořadí úseků ve skupině ani u souvislé polohy nemá význam; návaznost plyne z jejich průběhu.
+* Novou část nezakládá úsek jiné komunikace uvnitř křižovatky, krátká spojka ani souběh dvou silnic. Má-li
+  poloha popis ALERT-C, odpovídá každá část jedné cestě lokační tabulky ALERT-C.
+* Stejně se popisuje nesouvislá poloha, jejíž úseky nenavazují (např. ramena křižovatky).
 
 [[smer]]
 === Směr a obousměrné polohy
@@ -117,7 +135,7 @@ protisměru (<<gn>>)
 
 Skupina poloh se pro obousměrnost nepoužívá. Dvojice jednosměrných poloh sdružená do skupiny by
 vyžadovala odkaz jiného typu (`loc:LocationGroupByReference`), ztratila by vazbu mezi směry a metody
-OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pro oblasti.
+OpenLR a ALERT-C by obousměrnost vyjadřovaly dvakrát. Skupina je vyhrazena pro oblasti a polohy přes více komunikací.
 
 [[polohy]]
 == Popisování poloh
