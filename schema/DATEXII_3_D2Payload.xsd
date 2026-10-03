@@ -13,5 +13,10 @@
       <xs:field xpath="@id" />
       <xs:field xpath="@version" />
     </xs:unique>
+    <xs:unique name="_payloadPredefinedItineraryConstraint">
+      <xs:selector xpath=".//loc:predefinedItinerary" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
   </xs:element>
 </xs:schema>
