@@ -6,7 +6,7 @@ Odkazující zpráva nese jen identifikátor a verzi polohy; úplný popis poloh
 Sada obsahuje polohy jednoho druhu, například:
 
 * úseky FCD – úseky mezi lokacemi ALERT-C, každý směr jízdy jako samostatná poloha,
-* úseky meteohlásek – úseky silnice u meteohlásek, platné pro oba směry jízdy.
+* úseky meteohlásek – úseky komunikace u meteohlásek, platné pro oba směry jízdy.
 
 Formát vychází z publikace `loc:PredefinedLocationsPublication`
 <<EN16157-2>>.
@@ -52,7 +52,7 @@ Každá poloha sady je element `predefinedLocationReference`. Jeho typ určuje, 
 `loc:SingleRoadLinearLocation` – souvislý úsek jedné silnice nebo ulice, jehož všechny metody popisu
 (<<polohy>>) mají stejný rozsah. Platí to pro samostatnou polohu i pro každou část trasy a skupiny:
 
-* Novou část nezakládá úsek jiné komunikace uvnitř křižovatky, krátká spojka ani souběh dvou silnic.
+* Novou část nezakládá úsek jiné komunikace uvnitř křižovatky, krátká spojka ani souběh dvou komunikací.
 * Má-li poloha popis ALERT-C, odpovídá jedné cestě lokační tabulky ALERT-C.
 
 *Společné vlastnosti.*
@@ -128,7 +128,7 @@ include::{samplesdir}/predefined_location_itinerary.xml[tag=itinerary-part-2,ind
 ==== Nesouvislá skupina poloh
 
 Nesouvislá skupina sdružuje úseky, na které se opakovaně odkazuje jako na celek a které na sebe nenavazují
-– i na různých silnicích: oblast pravidelných zimních uzavírek, úseky v okolí meteohlásky. Je to element
+– i na různých komunikacích: oblast pravidelných zimních uzavírek, úseky v okolí meteohlásky. Je to element
 `predefinedLocationReference` typu `loc:PredefinedLocationGroup`.
 
 .Skupina tří nesouvislých úseků na dvou silnicích
