@@ -9,7 +9,7 @@ názvy z modelu, jsou nezávislé na jazyce a slouží jen ke čtení člověkem
 
 === predefined_location_set-fcd.xml – úseky FCD
 
-Čtyři úseky sady FCD – mezi lokacemi ALERT-C 2125 a 15781 a mezi lokacemi 25575 a 1325 (dálnice), každý směr jako samostatná poloha (síť GN 26.06). Úseky `TS02125T15781` a `TS25575T01325` jsou i ve vzorcích formátu `cz-ndic_d2-fcd-status`.
+Čtyři úseky sady FCD – mezi lokacemi ALERT-C 2125 a 15781 a mezi lokacemi 25575 a 1325 (dálnice), každý směr jako samostatná poloha (síť GN 26.06). Úseky `TS02125T15781` a `TS25575T01325` jsou i ve vzorcích formátu `x-format:cz-ndic_d2-fcd-status-v2.0`.
 
 [source,xml]
 ----
@@ -34,7 +34,7 @@ a `TS15781T02125`) a vlastním popisem všemi metodami. To je specifické pro ú
 === predefined_location_set-weather.xml – úseky meteohlásek
 
 Tři úseky meteohlásek ze sady weather (síť GN 25.12, data 30.{nbsp}9.{nbsp}2026). Na první úsek (7 83.427) odkazuje
-vzorek `aquaplaning.xml`, na druhý (Cínovec 2) vzorek `strong-wind.xml` formátu `cz-ndic_d2-weather`.
+vzorek `aquaplaning.xml`, na druhý (Cínovec 2) vzorek `strong-wind.xml` formátu `x-format:cz-ndic_d2-weather-v2.0`.
 
 [source,xml]
 ----

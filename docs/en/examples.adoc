@@ -12,7 +12,7 @@ readers only.
 
 Four sections of the FCD set – between ALERT-C locations 2125 and 15781 and between locations 25575 and
 1325 (motorway), each direction as a separate location (GN network 26.06). The sections `TS02125T15781` and
-`TS25575T01325` are also used in the samples of the format `cz-ndic_d2-fcd-status`.
+`TS25575T01325` are also used in the samples of the format `x-format:cz-ndic_d2-fcd-status-v2.0`.
 
 [source,xml]
 ----
@@ -39,7 +39,7 @@ bidirectional location (<<smer>>).
 
 Three road weather station sections of the weather set (GN network 25.12, data of 30{nbsp}September 2026). The
 first section (7 83.427) is referenced by the sample `aquaplaning.xml`, the second (Cínovec 2) by the sample
-`strong-wind.xml` of the `cz-ndic_d2-weather` format.
+`strong-wind.xml` of the `x-format:cz-ndic_d2-weather-v2.0` format.
 
 [source,xml]
 ----
